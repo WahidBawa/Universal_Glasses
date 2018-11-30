@@ -4,7 +4,8 @@ import cv2
 import colorsys
 
 # cap = cv2.VideoCapture(0)
-cap = cv2.VideoCapture("http://10.88.206.32:4747/mjpegfeed?640x480")
+cap = cv2.VideoCapture("http://10.88.206.32:8080/video")
+# cap = cv2.VideoCapture("http://10.88.206.32:4747/mjpegfeed?640x480")
 # def normalise(editablePhoto,sizeX,sizeY):
 #     NormalPhoto =  np.zeros((sizeX,sizeY,3),'float')
 #     x=sizeX-1
@@ -73,16 +74,18 @@ while(True):
     #             editablePhoto[i,j, k] = tempArray[k]*255
 
     #         NormalPhoto = normalise(editablePhoto, width, height)
+    editablePhoto = np.zeros((width,height,3),'float')
     for i in range(0, 100):
         for j in range(0, 100):
             for k in range(0, 3):
-                if k == 0:
-                    frame[i, j][k] *= 1.15
-                if k == 1:
-                    frame[i, j][k] *= 2.4546
+                # if k == 0:
+                #     editablePhoto[i, j][k] *= 1.15
+                # if k == 1:
+                #     editablePhoto[i, j][k] *= 2.4546
                 if k == 2:
-                    frame[i, j][k] *= .56465
-                        
+                    editablePhoto[i, j][k] *= .56465
+                    frame[i, j][k] = editablePhoto[i, j][k];
+    # frame = editablePhoto;      
     cv2.imshow('frame', frame)
     # cv2.imshow('a',res)
     if cv2.waitKey(1) & 0xFF == ord('q'):
