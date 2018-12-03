@@ -4,10 +4,12 @@ import imutils
 '''
 This Zoom Program was written by: Carlos J. Flores of F.I.U.
 '''
-cap = cv2.VideoCapture(0)
+# cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture("http://10.42.0.248:4747/mjpegfeed?640x480")
+
 ret, frame = cap.read() # Initializing the video frame
 # setting width & height of the video frame
-width = frame.shape[1] 
+width = frame.shape[1]
 height = frame.shape[0]
 
 def Zoom(cv2Object, zoomSize):
@@ -31,9 +33,9 @@ while(True):
     ret, frame = cap.read()
 
     # Zooming in
-    #frame = imutils.resize(frame, width=1280) #doubling the width
-    #frame = frame[240:720,320:960]
-    frame = Zoom(frame,2)
+    frame = imutils.resize(frame, width=1280) #doubling the width
+    frame = frame[240:720,320:960]
+    # frame = Zoom(frame,2)
 
     # Display the resulting frame
     cv2.imshow('frame',frame)
@@ -41,6 +43,6 @@ while(True):
         break
 
 # Releasing the capture
-cv2.imwrite("CanvasTest12.png", frame)
+# cv2.imwrite("CanvasTest12.png", frame)
 cap.release()
 cv2.destroyAllWindows()
