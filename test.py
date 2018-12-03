@@ -11,20 +11,7 @@ cap = cv2.VideoCapture(0)
 # cap = cv2.VideoCapture("http://192.168.0.75:8080/video")
 # cap = cv2.VideoCapture("http://192.168.0.75:4747/mjpegfeed?640x480")
 cap = cv2.VideoCapture("http://10.42.0.248:4747/mjpegfeed?640x480")
-
-
-def normalise(editablePhoto,sizeX,sizeY):
-    NormalPhoto =  np.zeros((sizeX,sizeY,3),'float')
-    x=sizeX-1
-    y=sizeY
-    for i in range(0,sizeX):
-        for j in range(0,sizeY):
-            for k in range(0,3):
-                NormalPhoto[x,j,k]=editablePhoto[i,j,k]
-        x=x-1
-
-    return NormalPhoto
-
+# cap = cv2.VideoCapture("http://10.42.0.248:4747/mjpegfeed?320x240")
 
 while(True):
     _, frame = cap.read()
@@ -32,6 +19,7 @@ while(True):
 
     cv2.imshow('img1',frame) #display the captured image
     if cv2.waitKey(1) & 0xFF == ord('q'): #save on pressing 'q' 
+        # height, width = 320, 240
         height, width = 640, 480
         editablePhoto = np.zeros((width,height,3),'float')
         hsvArray=np.zeros((width,height,3),'float')

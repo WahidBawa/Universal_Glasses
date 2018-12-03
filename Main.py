@@ -11,6 +11,7 @@ import colorsys
 # cap = cv2.VideoCapture("http://192.168.0.75:8080/video")
 # cap = cv2.VideoCapture("http://192.168.0.75:4747/mjpegfeed?640x480")
 # cap = cv2.VideoCapture("http://10.42.0.248:4747/mjpegfeed?640x480")
+cap = cv2.VideoCapture("http://10.42.0.248:4747/mjpegfeed?320x240")
 
 while(True):
     _, frame = cap.read()
