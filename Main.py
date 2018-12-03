@@ -9,22 +9,8 @@ import colorsys
 
 #MOTO G3
 # cap = cv2.VideoCapture("http://192.168.0.75:8080/video")
-cap = cv2.VideoCapture("http://192.168.0.75:4747/mjpegfeed?640x480")
+# cap = cv2.VideoCapture("http://192.168.0.75:4747/mjpegfeed?640x480")
 # cap = cv2.VideoCapture("http://10.42.0.248:4747/mjpegfeed?640x480")
-
-
-def normalise(editablePhoto,sizeX,sizeY):
-    NormalPhoto =  np.zeros((sizeX,sizeY,3),'float')
-    x=sizeX-1
-    y=sizeY
-    for i in range(0,sizeX):
-        for j in range(0,sizeY):
-            for k in range(0,3):
-                NormalPhoto[x,j,k]=editablePhoto[i,j,k]
-        x=x-1
-
-    return NormalPhoto
-
 
 while(True):
     _, frame = cap.read()
@@ -61,20 +47,15 @@ while(True):
             for k in range(0,3):
                 editablePhoto[i,j, k] = tempArray[k]*255
             frame[i, j, k] = editablePhoto[i, j, k]
-    # NormalPhoto = normalise(editablePhoto, 100, 100)
     NormalPhoto = editablePhoto
     for i in range(0,width):
         for j in range(0,height):
             for k in range(0,3):
                 frame[i,j,k] = NormalPhoto[i, j, k]
-    # arrayToImage(NormalPhoto,25,25,saveAs)
-
-
 
     cv2.imshow('frame', frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
-# When everything done, release the capture
 cap.release()
 cv2.destroyAllWindows()
 #NMJ3KR2W
