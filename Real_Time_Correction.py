@@ -7,7 +7,6 @@ import colorsys
 # cap = cv2.VideoCapture("http://10.88.206.32:8080/video")
 # cap = cv2.VideoCapture("http://10.88.206.32:4747/mjpegfeed?640x480")
 
-#MOTO G3
 # cap = cv2.VideoCapture("http://192.168.0.75:8080/video")
 # cap = cv2.VideoCapture("http://192.168.0.75:4747/mjpegfeed?640x480")
 # cap = cv2.VideoCapture("http://10.42.0.248:4747/mjpegfeed?640x480")
@@ -59,4 +58,3 @@ while(True):
         break
 cap.release()
 cv2.destroyAllWindows()
-#NMJ3KR2W
